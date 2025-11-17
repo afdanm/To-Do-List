@@ -35,3 +35,6 @@ Route::get('/tasks', function () {
 Route::delete('/tasks/name/{name}', function ($name) {
     Task::where('name', $name)->delete();
 });
+
+//menampilkan semua task dengan statusnya
+Route::get('/tasks/all', [TaskController::class, 'all'])->name('tasks.all');

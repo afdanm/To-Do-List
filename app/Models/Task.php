@@ -12,7 +12,6 @@ class Task extends Model
     // Relasi: satu Task milik satu TodoList
     public function list()
     {
-        // belongsTo berarti task memiliki foreign key: todo_list_id
-        return $this->belongsTo(TodoList::class);
+        return $this->belongsTo(TodoList::class, 'todo_list_id');
     }
 }

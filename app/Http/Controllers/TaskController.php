@@ -7,6 +7,18 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
+
+    public function all()
+    {
+        // Ambil semua tasks dengan relasi list, diurutkan berdasarkan status (pending dulu)
+        $allTasks = Task::with('list')
+            ->orderBy('is_done', 'asc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        
+        return view('tasks.all', compact('allTasks'));
+    }
+
     // Menambahkan task baru ke sebuah Todo List
     public function store(Request $request, $listId)
     {

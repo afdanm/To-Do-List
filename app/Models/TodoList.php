@@ -12,7 +12,6 @@ class TodoList extends Model
     // Relasi: satu TodoList memiliki banyak Task
     public function tasks()
     {
-        // hasMany berarti foreign key berada pada tabel tasks
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class, 'todo_list_id');
     }
 }
